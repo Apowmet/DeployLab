@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111f">
+  <meta name="description" content="DeployLab — учебный ASP.NET Core сайт для демонстрации сборки и развёртывания на Linux.">
+  <title>DeployLab — от кода до production</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="DeployLab — начало">
+        <span class="brand-logo">&lt;/&gt;</span>
+        <span>deploy<span class="brand-light">lab</span><span class="brand-dot">.</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Навигация">
+        <a href="#pipeline">Pipeline</a>
+        <a href="#environment">Environment</a>
+        <a href="#api">API</a>
+      </nav>
+      <span class="header-pill"><span class="pulse-dot"></span> ASP.NET Core 10</span>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> DEVOPS LEARNING PROJECT <span class="eyebrow-index">/ 001</span></div>
+          <h1>От исходного <span class="accent">кода</span><br>до работающего <span class="accent">сервиса.</span></h1>
+          <p class="hero-description">Один проект. Две операционные системы. Полный путь от <strong>GitHub и Visual Studio</strong> до развёртывания на <strong>Debian Linux</strong>.</p>
+          <div class="hero-buttons">
+            <a href="#environment" class="button button-primary">Посмотреть среду <span aria-hidden="true">↗</span></a>
+            <a href="#pipeline" class="button button-secondary">Этапы сборки <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="tech-list"><span>C#</span><span>.NET 10</span><span>REST API</span><span>Linux</span><span>systemd</span></div>
+        </div>
+        <div class="hero-terminal" aria-label="Иллюстрация рабочего терминала">
+          <div class="terminal-top"><div class="dots"><i></i><i></i><i></i></div><span>deploylab — terminal</span><span class="terminal-top-icon">⌘</span></div>
+          <div class="terminal-content">
+            <div><span class="term-dim">$</span> <span class="term-text">dotnet publish -c Release</span></div>
+            <div class="term-muted">Build succeeded.</div>
+            <div class="term-gap"><span class="term-dim">$</span> <span class="term-text">scp -r ./publish/. debian:~/app/</span></div>
+            <div class="term-muted">Transfer complete.</div>
+            <div class="term-gap"><span class="term-dim">$</span> <span class="term-text">curl http://debian:5000/health</span></div>
+            <div class="term-ok">{"status":"ok"} <span class="terminal-cursor">▍</span></div>
+          </div>
+          <div class="terminal-footer"><span><span class="small-green-dot"></span> DEPLOYMENT SUCCESSFUL</span><span>STATUS: 200 OK</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="pipeline">
+        <div class="section-heading"><div><p class="section-kicker">01 / PIPELINE</p><h2>Путь приложения</h2></div><p>Шесть этапов от репозитория до стабильного сервиса.</p></div>
+        <div class="pipeline">
+          <div class="pipeline-item"><span class="step-number">01</span><span class="pipeline-icon">⌘</span><strong>GitHub</strong><small>Исходный код</small></div>
+          <div class="pipeline-item"><span class="step-number">02</span><span class="pipeline-icon">{ }</span><strong>Develop</strong><small>VS / VS Code</small></div>
+          <div class="pipeline-item"><span class="step-number">03</span><span class="pipeline-icon">⚙</span><strong>Build</strong><small>dotnet build</small></div>
+          <div class="pipeline-item"><span class="step-number">04</span><span class="pipeline-icon">⇧</span><strong>Publish</strong><small>Release</small></div>
+          <div class="pipeline-item"><span class="step-number">05</span><span class="pipeline-icon">▣</span><strong>Deploy</strong><small>Debian VM</small></div>
+          <div class="pipeline-item"><span class="step-number">06</span><span class="pipeline-icon">◉</span><strong>Monitor</strong><small>Health check</small></div>
+        </div>
+      </section>
+
+      <section class="section" id="environment">
+        <div class="section-heading"><div><p class="section-kicker">02 / LIVE ENVIRONMENT</p><h2>Где запущен этот сайт?</h2>
+        <div class="env-layout">
+          <div class="env-feature">
+            <div class="feature-top"><span>EXECUTION ENVIRONMENT</span><span id="connection-label" class="connection-label"><span class="pulse-dot"></span> Подключение…</span></div>
+            <div class="os-symbol" id="os-symbol">⌘</div>
+            <p class="os-caption">Операционная система</p>
+            <h3 id="os-value">Загрузка…</h3>
+            <div class="env-feature-bottom"><span>SERVER-SIDE DATA</span><span id="arch-value">—</span></div>
+          </div>
+          <div class="metrics-grid">
+            <div class="metric-card"><span class="metric-label">.NET Runtime</span><strong id="dotnet-value">Загрузка…</strong><small>Среда выполнения C#</small></div>
+            <div class="metric-card"><span class="metric-label">Hostname</span><strong id="host-value">Загрузка…</strong><small>Машина, где работает процесс</small></div>
+            <div class="metric-card"><span class="metric-label">Environment</span><strong id="environment-value">Загрузка…</strong><small>ASPNETCORE_ENVIRONMENT</small></div>
+            <div class="metric-card"><span class="metric-label">Uptime</span><strong id="uptime-value">—</strong><small>С момента запуска приложения</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="api">
+        <div class="section-heading"><div><p class="section-kicker">03 / HTTP & API</p><h2>Проверим сервис</h2></div><p>Выполни реальный HTTP-запрос и посмотри JSON-ответ.</p></div>
+        <div class="api-panel">
+          <div class="api-controls">
+            <div class="endpoint"><span class="method">GET</span><code>/health</code><span class="endpoint-description">Проверка доступности</span></div>
+            <button id="health-button" class="button button-primary" type="button">Отправить запрос <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="api-output-bar"><span>RESPONSE</span><span id="response-status">Ожидаем запрос</span></div>
+          <pre id="api-output" aria-live="polite">Нажми «Отправить запрос», чтобы получить ответ сервера.</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer><span class="footer-brand">deploylab<span>.</span></span><span>Учебный проект на C# / ASP.NET Core 10</span><span>BUILD → DEPLOY → RUN</span></footer>
+  </div>
+</body>
+</html>

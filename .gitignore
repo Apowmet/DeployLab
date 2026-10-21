@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/publish/
+.vs/
+.vscode/.ropeproject/
+*.user
+*.suo
+.DS_Store
+
+publish-linux/
